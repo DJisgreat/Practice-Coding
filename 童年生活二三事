@@ -1,0 +1,61 @@
+题目描述
+NowCoder小时候走路喜欢蹦蹦跳跳，他最喜欢在楼梯上跳来跳去。
+ 但年幼的他一次只能走上一阶或者一下子蹦上两阶。
+ 现在一共有N阶台阶，请你计算一下NowCoder从第0阶到第N阶共有几种走法。
+
+输入描述:
+输入包括多组数据。每组数据包括一个整数n, (1≤n≤90)。
+
+
+输出描述:
+对应每个输入包括一个输出。
+为redraiment到达第n阶不同走法的数量。
+
+输入例子:
+1
+2
+
+输出例子:
+1
+2
+
+法1：提交超时
+// write your code here cpp
+#include<iostream>
+using namespace std;
+int res(int n)
+{
+    if(n==1)
+        return 1;
+    else if(n==2)
+        return 2;
+    else
+        return res(n-1)+res(n-2);
+}
+int main()
+{
+    int n;
+    while(cin>>n)
+    {
+        cout<<res(n)<<endl;
+    }
+    return 0;
+}
+
+法2：ok
+// write your code here cpp
+#include<iostream>
+using namespace std;
+int main()
+{
+    int n;
+    long long f[90];
+    f[0]=1;f[1]=2;
+    for(int i=2;i<90;i++)
+        f[i]=f[i-1]+f[i-2];
+    while(cin>>n)
+    {
+        cout<<f[n-1]<<endl;
+    }
+    return 0;
+}
